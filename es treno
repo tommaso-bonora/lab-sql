@@ -1,0 +1,24 @@
+CREATE TABLE treno (
+id_treno CHAR(6) PRIMARY KEY,
+max_posti INT,
+anno_costruzione DATE
+);
+
+
+CREATE TABLE tratta (
+id_tratta VARCHAR(50) PRIMARY KEY,
+stazione_partenza VARCHAR(50),
+stazione_arrivo VARCHAR(50),
+distanza INT
+);
+
+CREATE TABLE corsa (
+id_corsa VARCHAR(50) PRIMARY KEY,
+id_treno CHAR(6) ,
+id_tratta VARCHAR(50) ,
+FOREIGN KEY(id_treno) REFERENCES treno(id_treno),
+FOREIGN KEY(id_tratta) REFERENCES tratta(id_tratta),
+data DATE,
+ora_partenza TIME,
+ora_arrivo TIME
+);
